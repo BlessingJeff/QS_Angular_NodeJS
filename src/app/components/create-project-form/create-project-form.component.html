@@ -1,0 +1,267 @@
+<section class="pt-30">
+    <div class="container-fluid">
+        <div class="row create-project">
+            <div class="col-lg-12 mb-30">
+                <h2 class="section-heading">Enter Project Name <span style="font-weight: 100"> | </span></h2>
+            </div>
+            <div class="col-md-12 scroll-bar">
+                <form [formGroup]="createProjectForm" (ngSubmit)="createProject()">
+                    <div class="row mb-3">
+                        <div class="col-md-2 image-upload">
+                            <label for="file" style="width:100%;" [ngClass]="{'is-invalid':submitted && f['image'].errors}">
+                                <img class="img-fluid w-90" src="assets/images/add.png" alt="Add a image" />
+                            </label>
+                            <input id="file" type="file" name="image" (change)="uploadImage($event)" style="display: none;"/>
+                            <!-- <input id="file" type="file" name="image" (change)="uploadImage($event)"  /> -->
+                            <div class="filename mt-3" *ngIf="imageName">{{imageName}}</div>
+                            <p class="text-danger mb-0 mt-1" *ngIf="submitted && f['image'].errors && f['image'].errors?.['required']">Image is Required</p>
+                            <!-- <img [src]="imageName" alt="" /> -->
+                        </div>
+                        <div class="col-md-9">
+                            <div class="mb-40">
+                                <label class="form-label">Description</label>
+                                <textarea class="form-control" rows="4" placeholder="Description" formControlName="description" [ngClass]="{'is-invalid':submitted && f['description'].errors}"></textarea>
+                                <p class="text-danger mb-0 mt-1" *ngIf="submitted && f['description'].errors && f['description'].errors?.['required']">Description is Required</p>
+                            </div>
+
+                            <hr />
+
+                            <h5 class="section-subtitle">Client Details:</h5>
+                            <div class="principal-contractor-btns" *ngIf="principalclientlength < 1">
+                                <a class="btn btn-principal-contractor principal-client me-3 mb-3" (click)="showpcform()">+ Principal Client</a>
+                                <a class="btn btn-principal-contractor me-3 mb-3" href="javascript:;">+ Contractor</a>
+                            </div>
+
+                            <!-- Principal Client form -->
+                            <div *ngIf="principalclientlength">
+                              <div class="principal-client-container" *ngFor="let principalClient of principalclientArray.controls; let i = index;" formArrayName="principal-client">
+                                <div class="form-group" [formGroupName]='i'>
+                                    <div class="row">
+                                        <div class="col-md-6 col-lg-4 mb-3">
+                                            <label class="form-label">Principal Client Name</label>
+                                            <select class="form-select" formControlName="organization" [ngClass]="{'is-invalid':submitted && principalClient.get('organization')?.errors}">
+                                                <option value="" selected hidden>Select Organizaiton Name </option>
+                                                <option value="Alphabet Inc.">Alphabet Inc.</option>
+                                                <option value="Bill & Mellinda Gates Foundation">Bill & Mellinda Gates Foundation</option>
+                                                <option value="IDEO">IDEO</option>
+                                                <option value="Google">Google</option>
+                                                <option value="Sony Corporation Ltd.">Sony Corporation Ltd.</option>
+                                            </select>
+                                            <p class="text-danger mb-0 mt-1" *ngIf="submitted && principalClient.get('organization')?.errors && principalClient.get('organization')?.errors?.['required']">Organizaiton Name is Required</p>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4 mb-3">
+                                            <label class="form-label">Point of Contact</label>
+                                            <input type="text" class="form-control" placeholder="Enter Contact Name" formControlName="contact" [ngClass]="{'is-invalid':submitted && principalClient.get('contact')?.errors}" />
+                                            <p class="text-danger mb-0 mt-1" *ngIf="submitted && principalClient.get('contact')?.errors && principalClient.get('contact')?.errors?.['required']">Contact is Required</p>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4 mb-3">
+                                            <label class="form-label">Designation</label>
+                                            <input type="text" class="form-control" placeholder="Enter Designation of Contact" formControlName="designation" [ngClass]="{'is-invalid':submitted && principalClient.get('designation')?.errors}" />
+                                            <p class="text-danger mb-0 mt-1" *ngIf="submitted && principalClient.get('designation')?.errors && principalClient.get('designation')?.errors?.['required']">Designation is Required</p>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4 mb-3">
+                                            <label class="form-label">Mail ID</label>
+                                            <input type="email" class="form-control" placeholder="Enter Mail ID" formControlName="email" [ngClass]="{'is-invalid':submitted && principalClient.get('email')?.errors}" />
+                                            <p class="text-danger mb-0 mt-1" *ngIf="submitted && principalClient.get('email')?.errors && principalClient.get('email')?.errors?.['required']">Email is Required</p>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4 mb-3">
+                                            <label class="form-label">Mobile Number</label>
+                                            <div class="input-group">
+                                                <select class="input-group-text">
+                                                    <option selected>+91</option>
+                                                    <option value="2">+92</option>
+                                                    <option value="3">+93</option>
+                                                </select>
+                                                <input type="text" class="form-control only-number" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" formControlName="mobileno" [ngClass]="{'is-invalid':submitted && principalClient.get('mobileno')?.errors}" />
+                                              </div>
+                                              <p class="text-danger mb-0 mt-1" *ngIf="submitted && principalClient.get('mobileno')?.errors && principalClient.get('mobileno')?.errors?.['required']">Mobile Number is Required</p>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <a class="btn mx-1 float-md-end remove-contact mb-2" (click)="removePrincipalClient(i)">Cancel</a>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="col-md-12 mb-3" *ngIf="principalclientlength < 3">
+                                <a href="javascript:;" class="btn add-another-contact add-contact mb-3" (click)="addPrincipalClient()"><span class="btn-add-another-contact">+</span> Add another contact</a>
+                              </div>
+                            </div>
+
+                            <hr />
+
+                            <!-- Logistical Information -->
+                            <h5 class="section-subtitle">Logistical Information</h5>
+                            <div class="row">
+                                <div class="col-md-6 col-xl-4 mb-3">
+                                    <label class="form-label">Targeted Location of Project</label>
+                                    <select class="form-select" formControlName="projectlocation" [ngClass]="{'is-invalid':submitted && f['projectlocation'].errors}">
+                                        <option value="" selected hidden>Select Location</option>
+                                        <option value="Japan, Taiwan, Thailand">Japan, Taiwan, Thailand</option>
+                                        <option value="Taiwan">Taiwan</option>
+                                        <option value="Thailand">Thailand</option>
+                                    </select>
+                                    <p class="text-danger mb-0 mt-1" *ngIf="submitted && f['projectlocation'].errors && f['projectlocation'].errors?.['required']">Targeted Location of Project is Required</p>
+                                </div>
+                                <div class="col-md-6 col-xl-2 mb-3">
+                                    <label class="form-label">Duration</label>
+                                    <select class="form-select" formControlName="fromdate" [ngClass]="{'is-invalid':submitted && f['fromdate'].errors}">
+                                        <option value="" selected hidden>From</option>
+                                        <option value="March 2022">March 2022</option>
+                                        <option value="April 2022">April 2022</option>
+                                        <option value="June 2022">June 2022</option>
+                                    </select>
+                                    <p class="text-danger mb-0 mt-1" *ngIf="submitted && f['fromdate'].errors && f['fromdate'].errors?.['required']">From Date is Required</p>
+                                </div>
+                                <div class="col-md-6 col-xl-2 mb-3 text-end">
+                                    <label class="form-label">0 months</label>
+                                    <select class="form-select" formControlName="todate" [ngClass]="{'is-invalid':submitted && f['todate'].errors}">
+                                        <option value="" selected hidden>To</option>
+                                        <option value="Dec 2023">Dec 2023</option>
+                                        <option value="Jan 2023">Jan 2023</option>
+                                        <option value="Feb 2023">Feb 2023</option>
+                                    </select>
+                                    <p class="text-danger mb-0 mt-1" *ngIf="submitted && f['todate'].errors && f['todate'].errors?.['required']">To Date is Required</p>
+                                </div>
+                                <div class="col-md-6 col-xl-4 mb-3">
+                                    <div class="d-flex justify-content-between mtop-5">
+                                        <label class="form-label">Budget</label>
+                                        <div class="hide">
+                                          <div *ngIf="currencyType; else elseBlock">{{currencyType + ':' + currency}}</div>
+                                          <ng-template #elseBlock>INR ₹</ng-template>
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <select class="input-group-text select_box" (change)="selectCurrency($event)" formControlName="currency">
+                                            <option selected value="INR ₹">$ USD</option>
+                                            <option value="USD $">₹ INR</option>
+                                        </select>
+                                        <input type="text" class="form-control only-number" placeholder="0" (keyup)="HandleCurrency($event)" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" formControlName="budget" [ngClass]="{'is-invalid':submitted && f['budget'].errors}" />
+                                    </div>
+                                    <p class="text-danger mb-0 mt-1" *ngIf="submitted && f['budget'].errors && f['budget'].errors?.['required']">Budget is Required</p>
+                                </div>
+                            </div>
+
+                            <hr />
+
+                            <!-- Tagging and Identification -->
+                            <h5 class="section-subtitle">Tagging and Identification</h5>
+                            <div class="row">
+                                <div class="col-md-6 col-lg-4 dd-one mb-3">
+                                    <label class="form-label">Service Type</label>
+                                    <select class="form-select" formControlName="servicetype" [ngClass]="{'is-invalid':submitted && f['servicetype'].errors}">
+                                        <option value="" selected hidden>Select Service Type</option>
+                                        <option value="Design Research">Design Research</option>
+                                        <option value="Recruiting & Moderating">Recruiting & Moderating</option>
+                                        <option value="Workshopping">Workshopping</option>
+                                        <option value="Transdisciplinary Design">Transdisciplinary Design</option>
+                                        <option value="Behavioural Design">Behavioural Design</option>
+                                        <option value="Long-term research">Long-term research</option>
+                                        <option value="Market Strategy">Market Strategy</option>
+                                        <option value="Business Development">Business Development</option>
+                                        <option value="+ New ">+ New </option>
+                                    </select>
+                                    <p class="text-danger mb-0 mt-1" *ngIf="submitted && f['servicetype'].errors && f['servicetype'].errors?.['required']">Service Type is Required</p>
+                                </div>
+                                <div class="col-md-6 col-lg-4 mb-3">
+                                    <label class="form-label">Industry</label>
+                                    <select class="form-select" formControlName="industry" [ngClass]="{'is-invalid':submitted && f['industry'].errors}">
+                                        <option value="" selected hidden>Select Industry</option>
+                                        <option value="Industry One">Industry One</option>
+                                        <option value="Industry Two">Industry Two</option>
+                                        <option value="Industry Three">Industry Three</option>
+                                    </select>
+                                    <p class="text-danger mb-0 mt-1" *ngIf="submitted && f['industry'].errors && f['industry'].errors?.['required']">Industry is Required</p>
+                                </div>
+                                <div class="col-md-6 col-lg-4 mb-3">
+                                    <label class="form-label">Sector of Work</label>
+                                    <select class="form-select" formControlName="sectorwork" [ngClass]="{'is-invalid':submitted && f['sectorwork'].errors}">
+                                        <option value="" selected hidden>Select Sector of Work</option>
+                                        <option value="Sector of Work One">Sector of Work One</option>
+                                        <option value="Sector of Work Two">Sector of Work Two</option>
+                                        <option value="Sector of Work Three">Sector of Work Three</option>
+                                    </select>
+                                    <p class="text-danger mb-0 mt-1" *ngIf="submitted && f['sectorwork'].errors && f['sectorwork'].errors?.['required']">Sector of Work is Required</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-end me-3">
+                            <a class="btn btn-cancel mb-3" routerLink="/dashboard">Cancel</a>
+                            <button class="btn btn-next-add-team mb-3" type="submit">Next : Add Team</button>
+                        </div>
+                        <div class="col-md-12 text-end me-3">
+                            <a href="javascript:;" class="skip">Skip & Create</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Principal client Modal
+<div class="modal fade" id="principalModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-2 text-project-setup">
+            <div class="modal-body">
+                <div class="row text-black">
+                    <div class="col-md-12 mb-3 h6">Client Details</div>
+                    <div class="col-md-12 mb-3 h4">Add New Principal Client Organization</div>
+                </div>
+                <div class="row">
+                    <form>
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label">Organization Name</label>
+                            <input type="text" class="form-control w-75" placeholder="Sony Corporation" />
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <ul>
+                                <li>Please ensure to type the name in long form</li>
+                                <li>Make sure the 1st letter of every word is a capital letter</li>
+                                <li>Ensure that the new Organization is unique and not a duplicate</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label">Re-enter Service Type</label>
+                            <input type="text" class="form-control w-75" placeholder="Sony Corporation" />
+                        </div>
+                        <button type="submit" class="btn btn-dark-grey float-end">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- Type Modal
+<div class="modal fade" id="typeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-2 text-project-setup">
+            <div class="modal-body">
+                <div class="row text-black">
+					          <div class="col-md-12 mb-3 h6">Tagging and Identification</div>
+					          <div class="col-md-12 mb-3 fs-22 h4">Add New Service Type</div>
+                </div>
+                <div class="row">
+                    <form>
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label">Service Type</label>
+                            <input type="text" class="form-control w-75" placeholder="Trend Forecasting"/>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <ul>
+                                <li>Please ensure to type the name in long form</li>
+                                <li>Make sure the 1st letter of every word is a capital letter</li>
+                                <li>Ensure that the new Organization is unique and not a duplicate</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label">Re-enter Service Type</label>
+                            <input type="text" class="form-control w-75" placeholder="Trend Forecasting"/>
+                        </div>
+                        <button type="submit" class="btn btn-dark-grey float-end">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

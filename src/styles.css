@@ -1,1 +1,842 @@
-/* You can add global styles to this file, and also import other style files */
+/*---------------------------------------------------
+Font-family
+----------------------------------------------------*/
+@font-face {
+    font-family: "Poppins";
+    src: url('assets/fonts/Poppins-Regular.ttf');
+}
+@font-face {
+    font-family: "Poppins_italic";
+    src: url('assets/fonts/Poppins-Italic.ttf');
+}
+/*---------------------------------------------------
+Focus-none
+----------------------------------------------------*/
+.btn:focus, .form-select:focus, .form-control:focus, select:focus{
+    box-shadow: none;
+    border: 1px solid #E3E4E8;
+    outline: 0;
+}/*---------------------------------------------------
+Modal
+----------------------------------------------------*/
+.modal li, .modal label, .modal select{
+    font-family: "Poppins";
+    font-weight: 400;
+    font-size: 12px;
+    color: #9A9EA9;
+	margin-bottom: 3px;
+}
+.modal input{
+    font-family: "Poppins";
+    font-size: 14px;
+    color: #000000;
+}
+.modal .h6{
+    font-family: "Poppins";
+    font-size: 12px;
+	color: #000000;
+}
+.modal .h4{
+    font-family: "Poppins";
+    font-weight: 600;
+    color: #000000;
+    font-size: 20px;
+}
+.modal .form-control::-moz-placeholder {
+  color: #000000 !important;
+  opacity: 1;
+}
+.modal .form-control:-ms-input-placeholder {
+  color: #000000 !important;
+}
+.modal .form-control::-webkit-input-placeholder {
+  color: #000000 !important;
+}
+.modal .btn{
+    font-size: 18px;
+    font-weight: 600;
+    font-family: "Poppins";
+    color: #595A60;
+    background-color: #D9D9D9;
+}
+.modal-style {
+    color: #9a9ea9;
+    font-size: 12px;
+}
+/* ----------------------------------------------------
+Common classes
+------------------------------------------------------- */
+.form-control{
+    color: #000000;
+    font-family: "Poppins";
+}
+.fs-11 {
+    font-size: 11px;
+    font-weight: 400;
+    font-family: "Poppins";
+}
+.mtop-5{
+	margin-top: 5px;
+}
+.w-90{
+	width: 90% !important;
+}
+.input-group-text {
+    width: 25%;
+    padding: 0px;
+    background-color: #ffffff;
+    text-overflow: ellipsis;
+}
+.section-heading{
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 32px;
+    color: #000000;
+}
+.section-subtitle{
+    font-family: "Poppins";
+    font-size: 14px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 20px;
+}
+.section-subtitle2{
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 14px;
+    color: #000000;
+}
+.pt-30{
+    padding-top: 30px !important;
+}
+.mb-30{
+    margin-bottom: 30px !important;
+}
+.mb-40{
+    margin-bottom: 40px !important;
+}
+.body{
+    font-family: "Poppins";
+    font-size: 12px;
+    overflow-x: hidden;
+    background: #ffffff;
+}
+::placeholder {
+  color: #9a9ea9 !important;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: #9a9ea9 !important;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: #9a9ea9 !important;
+}
+a {
+    text-decoration: none;
+    color: #999999;
+}
+/* ----------------------------------------------------
+Text-color
+------------------------------------------------------- */
+.text-grey{
+    color: #d7d7d7;
+}
+/* ----------------------------------------------------
+Background-color
+------------------------------------------------------- */
+.bg-grey{
+    background-color: #d7d7d7;
+}
+.bg-gray-shade {
+    background-color: #f6f6f6;
+}
+/* ----------------------------------------------------
+Buttons
+-------------------------------------------------------- */
+.btn-white{
+    color: #ABABAB;
+    background-color:#FFFFFF;
+}
+/* ----------------------------------------------------
+Navbar
+------------------------------------------------------- */
+.navbar-bg-grey{
+    background: #D9D9D9;
+}
+.header-logo{
+    font-size: 18px;
+    font-weight: 500;
+    font-family: "Poppins";
+    color: #FCA200 !important;
+    padding-inline: 5px;
+}
+.header-name{
+    font-family: "Poppins";
+    font-weight: 400;
+    font-size: 14px;
+    color: #858484;
+    padding-right: 2px;
+}
+/* ----------------------------------------------------
+Login form
+------------------------------------------------------- */
+.overflow-x-hidden{
+    overflow-x: hidden;
+}
+.login-heading{
+    font-family: "Poppins";
+    font-size: 22px;
+    font-weight: 500;
+    color: #FCA200;
+    text-align: center;
+}
+.login-subtitle{
+    font-family: "Poppins";
+    font-weight: 300;
+    font-size: 14px;
+    color: #A7A7A7;
+    text-align: center;
+}
+.login-form a{
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Poppins_italic";
+    color: #A7A7A7;
+    text-decoration: underline;
+}
+/* .login-form form {
+    margin-left: 22%;
+    margin-right: 20%;
+    width: 56%;
+} */
+.login-form label{
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 14px;
+    color: #000000;
+}
+.login-form .form-control{
+    font-family: "Poppins";
+    font-size: 14px;
+    color:#b8b8b8;
+    background-color: #f8f7f7;
+    border:1px solid #f8f7f7;
+	  border-radius: 8px;
+}
+.login-form .sign-in{
+    text-align: center;
+    margin: 3rem !important;
+}
+.form-control.is-invalid, .was-validated .form-control:invalid {
+    border-color: #dc3545 !important;
+}
+/* ---------------------------------------------------
+Dashboard
+----------------------------------------------------- */
+.search-box{
+    font-family: "Poppins";
+    font-size: 14px;
+    font-weight: 400;
+    color:#B8B8B8;
+    background-color: #f8f7f7;
+    border:0;
+    border-radius: 6px;
+    width: 58%;
+}
+.search-btn{
+    font-family: "Poppins";
+    font-size: 14px;
+    font-weight: 400;
+    color:#b8b8b8;
+    background-color: #f8f7f7;
+    border:0;
+    border-radius: 6px;
+    padding-inline-end: 50px;
+}
+.search-btn:hover{
+    color:#000;
+    background-color: #f8f7f7;
+}
+.btn-project{
+    font-size: 12px;
+    font-weight: 600;
+    font-family: "Poppins";
+    color: #000000;
+    background-color: #d9d9d9 !important;
+    border-radius: 8px;
+    padding-block: 3px;
+    padding-inline: 20px;
+}
+.btn-other-project{
+    font-size: 12px;
+    font-weight: 600;
+    font-family: "Poppins";
+    color: #000000;
+    background-color: #f2f5fa !important;
+    border-radius: 8px;
+    padding-block: 3px;
+    padding-inline: 20px;
+}
+.btn-options{
+    font-family: "Poppins";
+    font-size: 11px !important;
+    font-weight: 600;
+    color:#000000 !important;
+    padding-inline: 15px;
+    padding-block: 2px;
+    background-color:#F2F5FA !important;
+}
+.card-border{
+    border: 2px dashed #d2d2d2 !important;
+    border-radius: 10px;
+}
+.card-project h6{
+    font-size: 14px;
+    color:#999999;
+}
+.card-project a{
+    font-size: 18px !important;
+    color: #000000;
+    font-weight: 600;
+    line-height: 2px;
+}
+.card-project p{
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+    color: #8b8b8b;
+}
+.card-project .progress{
+    height: 7px;
+}
+.card-project{
+    font-family: "Poppins";
+    border-radius: 10px;
+    position: relative;
+    height: 73%;
+    background: #F5F5F5;
+    border: 0;
+}
+.card-project-complete{
+    background-color:#f5f5f5;
+    pointer-events:none;
+}
+.card-project-complete a{
+    font-family: "Poppins";
+    font-size: 18px;
+    color: #c7c7c7;
+    line-height: 15px;
+    font-weight: 500;
+}
+.card-project-complete .btn-complete{
+	font-family: "Poppins";
+	font-weight: 600;
+    font-size: 11px !important;
+    padding-inline: 10px;
+}
+.card-project-complete p{
+    font-family: "Poppins";
+    font-size: 12px;
+    font-weight: 400;
+    color: #d7d7d7;
+}
+.publish {
+    font-family: "Poppins";
+    font-size: 12px;
+    color: #7c8ba6;
+    font-weight: 600;
+    margin-top: 7px;
+}
+/*----------------------------------------------------
+Projects
+---------------------------------------------------- */
+.btn-project2{
+    font-size: 12px;
+    font-weight: 600;
+    font-family: "Poppins";
+    color: #000000;
+    background-color: #f2f5fa !important;
+    border-radius: 8px;
+    padding-block: 3px;
+    padding-inline: 20px;
+}
+.btn-other-project2{
+    font-size: 12px;
+    font-weight: 600;
+    font-family: "Poppins";
+    color: #000000;
+    background-color: #d9d9d9 !important;
+    border-radius: 8px;
+    padding-block: 3px;
+    padding-inline: 20px;
+}
+.other-card-project{
+    border-radius: 10px;
+    font-family: "Poppins";
+    background: #F5F5F5;
+    border: 0;
+}
+.other-card-project a{
+    font-size: 18px;
+    color: #000000 !important;
+    font-weight: 600;
+}
+.other-card-project p{
+    margin:0;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    color: #8b8b8b;
+}
+.project-btn{
+    font-family: "Poppins";
+    font-size: 12px !important;
+    font-weight: 400;
+    color: #8b8b8b;
+    background-color: #F5F5F5;
+    border-radius: 8px;
+    padding: 3px 10px;
+}
+.research{
+    font-family: "Poppins";
+    font-size: 11px;
+    color: #cacfd6;
+	font-weight: 600;
+}
+
+/* --------------------------------------------------
+Create project
+----------------------------------------------------- */
+.create-project label, .create-project input, .create-project select{
+    font-size: 12px;
+    font-weight: 400;
+    font-family: "Poppins";
+    margin-bottom: 2px;
+    color: #9a9ea9;
+}
+.create-project select option{
+    font-size: 12px;
+    font-weight: 400;
+    font-family: "Poppins";
+    margin-bottom: 2px;
+    color: #000000;
+}
+form hr{
+    border: 1px solid #eaebee;
+    opacity: 1;
+}
+.btn-principal-contractor{
+    font-family: "Poppins";
+    font-size: 14px;
+    font-weight: 600;
+    color: #7c7d83;
+    background-color: #efefef !important;
+}
+.btn-add-another-contact{
+    color: #7A7C82;
+    font-size: 14px;
+    background-color: #f3f3f3;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.25rem;
+}
+.add-contact{
+    padding-left: 0;
+    font-size: 14px;
+    font-family: "Poppins";
+    font-weight: 400;
+    color: #9A9EA9;
+}
+.remove-contact{
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 14px;
+    color: #a5a6aa;
+    background: #efefef !important;
+}
+.hide{
+	font-size: 12px;
+    font-weight: 400;
+    font-family: "Poppins";
+    margin-bottom: 2px;
+    color: #9a9ea9;
+}
+.btn-cancel{
+    font-family: "Poppins";
+    font-size: 18px;
+    font-weight: 600;
+    color: #7a8093;
+}
+.btn-next-add-team{
+    font-family: "Poppins";
+    font-size: 18px;
+    font-weight: 600;
+    color: #d8d8d9;
+    background-color: #f7f7f7 !important;
+}
+.filename{
+    font-family: "Poppins";
+    font-size: 14px;
+    font-weight: 400;
+    color: #9A9EA9;
+}
+.skip{
+    font-family: "Poppins_italic";
+    color: #d1d2d7;
+    font-size: 11px;
+    font-weight: 400;
+    text-decoration: underline;
+}
+/* --------------------------------------------------
+Project team
+----------------------------------------------------- */
+.project-team label, .project-team input, .project-team select{
+    font-size: 12px;
+    font-weight: 400;
+    font-family: "Poppins";
+    margin-bottom: 2px;
+    color: #9a9ea9;
+	width: 100%;
+}
+.project-team select option{
+    font-size: 12px;
+    font-weight: 400;
+    font-family: "Poppins";
+    margin-bottom: 2px;
+    color: #000000;
+}
+.sensory-text{
+    font-size: 20px;
+    font-weight: 600;
+    font-family: "Poppins";
+    color: #9A9EA9;
+}
+.project-team p{
+    font-family: "Poppins";
+    font-size: 12px;
+    font-weight: 400;
+    color: #9A9EA9;
+}
+.project-team span{
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Poppins";
+    color: #CCCFD6;
+}
+.project-team2 a{
+    font-size: 12px;
+    color: #7A8093;
+}
+.project-team2 .circle-image {
+    background-color: #ebebeb;
+    margin-left: 7px;
+}
+.project-team2 .btn-back {
+    font-family: "Poppins";
+    font-size: 18px;
+    font-weight: 600;
+    color: #7A8093;
+}
+.project-team2 .btn-create-project {
+    font-family: "Poppins";
+    font-size: 18px;
+    font-weight: 600;
+    background: #D9D9D9;
+    border-radius: 6px;
+    color: #595A60;
+}
+
+/* ---------------------------------------------------
+Sensory stimuli study (Project setup)
+------------------------------------------------------ */
+.btn-service{
+    font-family: "Poppins";
+    font-weight: 400;
+    font-size: 12px;
+    color: #7A8093;
+    background-color: #EBEBEB;
+    border-radius: 6px;
+    padding: 0 12px;
+}
+.text-service{
+    font-family: "Poppins";
+    font-weight: 400;
+    font-size: 12px;
+    color: #9A9EA9;
+}
+.text-desc{
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Poppins";
+    color: #606060;
+}
+.text-ash{
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 12px;
+    color: #606060;
+}
+.plus{
+    color:#7a7c82;
+    background-color: #f3f3f3;
+    padding-inline: 5px;
+    border-radius: 5px;
+}
+.manage-finance-tab .nav-pills .nav-link{
+    margin-bottom: 7px;
+    border-bottom: 2px solid #d9d9d9;
+    background: #fafafa;
+    color: #5a5a5a;
+    padding-inline: 50px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: "Poppins";
+}
+.manage-finance-tab .nav-pills .nav-link.active,
+.manage-finance-tab .nav-pills .show>.nav-link {
+    border-bottom: 2px solid #000000;
+    background: #eeeeee;
+    color: #5a5a5a;
+}
+.spread-sheet{
+    font-family: "Poppins";
+    font-weight: 14px;
+    font-weight: 600;
+    border-radius: 10px;
+    width:300px;
+    padding: 10px;
+    background-color: #f3f3f3;
+    color:#8B8B8B;
+    align-items: center;
+}
+.team-members{
+    font-family: "Poppins";
+    font-weight: 400;
+    font-size: 12px;
+    color:  #7A8093;
+    white-space: nowrap;
+}
+.finance {
+    font-family: "Poppins";
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 5px;
+    color: #000000;
+    background-color: #e4e4e4;
+}
+.text-project-setup{
+    font-family: "Poppins";
+    font-weight: 400;
+    font-size: 11px;
+    color: #9B9B9B;
+}
+.project-setup h4{
+    font-family: "Poppins";
+    font-size: 14px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 15px;
+}
+.btn-drive {
+    font-size: 14px;
+    font-weight: 500;
+    font-family: "Poppins";
+    padding-inline: 30px;
+    color: #8B8B8B;
+    background-color: #e5e5e5;
+    border-radius: 5px;
+}
+.no-embeds{
+    font-family: "Poppins";
+    font-weight: 500;
+    font-size: 12px;
+    color: #D4D4D4;
+}
+.rect{
+    width: 100%;
+    height: 200px;
+    background: #F3F3F3;
+    border-radius: 8px;
+    text-align: right;
+}
+.rect i{
+    padding: 5px;
+    border-radius: 5px;
+    margin: 7px;
+    color: white;
+    background: #8C8383;
+}
+.embeds p{
+    font-family: "Poppins";
+    font-size: 14px;
+    font-weight: 600;
+    color:  #8B8B8B;
+}
+.btn-before-publish{
+    font-family: "Poppins";
+    font-size: 18px;
+    font-weight: 600;
+    color: #d8d8d9;
+    background-color: #f7f7f7;
+    border-radius: 6px;
+	pointer-events: none;
+}
+.btn-publish{
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 18px;
+	color: #595A60;
+    background-color:  #D9D9D9;
+    border-radius: 6px;
+}
+.text-publish{
+    font-family: "Poppins";
+    font-size: 12px;
+    font-weight: 400;
+    color: #B8BBC5;
+}
+.modal-drive p{
+    font-family: "Poppins";
+    font-weight: 400;
+    font-size: 11px;
+    color: #9A9EA9;
+    margin-bottom: 2px;
+}
+.modal-drive .btn-folder {
+    font-family: "Poppins";
+    font-weight: 400;
+    font-size: 12px;
+    color: #9A9EA9;
+    background: #F8F8F8;
+    border: 1px solid #E3E4E8;
+    width: 100%;
+    text-align: left;
+}
+.modal-drive .btn-plus {
+    font-family: "Poppins";
+    font-size: 12px;
+    color: #7A7C82;
+    background: #F8F8F8;
+}
+.drive-folders .card {
+    color: #8B8B8B;
+    background: #F3F3F3;
+    border: 0;
+    border-radius: 12px;
+    padding: 5px;
+}
+.drive-folders .card .card-body {
+    background: #FFFFFF;
+    border-radius: 10px;
+}
+.drive-folders .card .card-body img{
+    margin: 5px;
+}
+.drive-folders .card h6 {
+    font-size: 14px;
+    color: #999999;
+}
+.btn-main {
+    font-family: "Poppins";
+    font-size: 14px;
+    color: #fff;
+    background-color: #383536 !important;
+}
+.btn-main:hover {
+    color: #000;
+    background-color: #efefef !important;
+}
+.btn:focus{
+  box-shadow: none;
+  outline: 0;
+  border: 0;
+}
+/*----------------------------------------------------
+Media query for Resposive page
+------------------------------------------------------*/
+@media (min-width: 576px){
+    .container-fluid{
+        width: 100% !important;
+        padding-right: 4rem !important;
+        padding-left: 4rem !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+    }
+    .fluid-p-0{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+@media (min-width: 992px){
+    .img-100vh{
+        height: 100vh;
+        width: auto;
+        max-width: 100%;
+    }
+    .login-form{
+        position: relative;
+        top: 42%;
+        transform: translateY(-50%);
+        padding: 0 50px;
+    }
+}
+@media (max-width: 768px){
+	.card-project{
+		font-family: "Poppins";
+		border-radius: 10px;
+		position: relative;
+		height: 80%;
+		background: #F5F5F5;
+		border: 0;
+	}
+}
+
+@media (max-width: 992px){
+    .overflow-x-hidden .row{
+        flex-flow: column-reverse;
+    }
+    .login-form{
+        padding: 0 20px;
+    }
+    }
+@media (max-width: 576px){
+    .navbar a{
+        font-size: 14px;
+        margin-right: 0;
+    }
+    .navbar h5{
+        font-size: 11px;
+        margin-left: 0;
+    }
+    .navbar .quicksand-logo{
+        width:15px;
+    }
+    .manage-finance-tab .nav-pills .nav-link{
+        border-bottom: 2px solid #d9d9d9;
+        background: #fafafa;
+        color: #5a5a5a;
+        padding-inline: 25px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .spread-sheet{
+        width:100%;
+    }
+    .login-form h3{
+        font-size: 18px;
+    }
+    .login-form p{
+        font-size: 12px;
+    }
+    .login-form .form-control{
+        font-size: 12px;
+    }
+    .login-form .sign-in{
+        /* margin: 10px !important; */
+        margin: 20px 10px 25px !important;
+    }
+}

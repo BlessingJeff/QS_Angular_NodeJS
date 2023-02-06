@@ -1,0 +1,21 @@
+<p class="bg-danger text-white px-3 py-2 rounded-2" *ngIf="errorMsg">{{this.errorMsg}}</p>
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" placeholder="Enter your Quicksand Email ID" formControlName="email" [ngClass]="{'is-invalid':submitted && f['email'].errors}" />
+        <p class="text-danger mb-0 mt-1" *ngIf="submitted && f['email'].errors && f['email'].errors?.['required']">Email is Required</p>
+        <p class="text-danger mb-0 mt-1" *ngIf="submitted && f['email'].errors && f['email'].errors?.['email']">Enter valid Email</p>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" placeholder="**********" formControlName="password" [ngClass]="{'is-invalid':submitted && f['password'].errors}" />
+        <p class="text-danger mb-0 mt-1" *ngIf="submitted && f['password'].errors && f['password'].errors?.['required']">Password is Required</p>
+    </div>
+    <div class="mb-3 text-center">
+      <button type="submit" class="btn btn-sm btn-main">Login</button>
+    </div>
+    <div class="sign-in">
+        <a href="javascript:;">or Sign In with Google <img src="assets/images/icons/google.png" class="ms-1 img-fluid" alt="google-logo" />
+        </a>
+    </div>
+</form>
