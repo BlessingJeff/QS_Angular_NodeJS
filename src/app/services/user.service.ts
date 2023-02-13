@@ -33,7 +33,7 @@ export class UserService {
   }
 
   getUserByToken(token:any):Observable<userModel>{
-    return this.http.get<userModel>('getuserbytoken'+'/'+token);
+    return this.http.get<userModel>('user'+'/'+token);
   }
 
 }

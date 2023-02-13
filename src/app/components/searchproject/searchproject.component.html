@@ -1,4 +1,12 @@
 <form class="d-flex">
-    <input class="form-control search-box me-4" type="search" placeholder="Search" aria-label="Search" />
-    <button class="btn search-btn" type="submit">Sort</button>
+  <input
+    class="form-control search-box me-4"
+    type="text"
+    [(ngModel)]="enteredSerchValue"
+    name="Search"
+    (input)="onSearchTextChanged()"
+    placeholder="Search"
+    aria-label="Search"
+  />
+  <!-- <button class="btn search-btn" type="submit">Sort</button> -->
 </form>

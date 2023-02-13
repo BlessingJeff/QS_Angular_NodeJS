@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+
 @Component({
-  selector: 'app-projects-archives',
-  templateUrl: './projects-archives.component.html',
+  selector: 'app-projectcard',
+  templateUrl: './projectcard.component.html',
   styles: [],
 })
-export class ProjectsArchivesComponent {
+export class ProjectcardComponent {
   projects = [
     {
       id: 1322,
@@ -35,7 +36,6 @@ export class ProjectsArchivesComponent {
         { button: 'Speculative Design' },
         { button: 'FinTech' },
         { button: 'Animation & Film' },
-        { button: 'FinTech' },
       ],
     },
 
@@ -51,8 +51,9 @@ export class ProjectsArchivesComponent {
         { button: 'Healthcare' },
         { button: 'Speculative Design' },
         { button: 'FinTech' },
-        { button: 'Mental Health' },
-        { button: 'Speculative Design' },
+        { button: 'Animation & Film' },
+        { button: 'Animation & Film' },
+        { button: 'Animation & Film' },
       ],
     },
 
@@ -78,6 +79,9 @@ export class ProjectsArchivesComponent {
         { button: 'Behavioural Design' },
         { button: 'Development sector' },
         { button: 'Mental Health' },
+        { button: 'Healthcare' },
+        { button: 'Healthcare' },
+        { button: 'Healthcare' },
       ],
     },
     {
@@ -93,52 +97,14 @@ export class ProjectsArchivesComponent {
         { button: 'FinTech' },
         { button: 'Animation & Film' },
         { button: 'Animation & Film' },
-        { button: 'Branding & Marketing' },
-        { button: 'Behavioural Design' },
-        { button: 'Development sector' },
-        { button: 'Mental Health' },
+        { button: 'Animation & Film' },
+        { button: 'Animation & Film' },
+        { button: 'Animation & Film' },
+        { button: 'Animation & Film' },
       ],
     },
   ];
 
-  buttons = [
-    'Behavioural Design',
-    'Branding & Marketing',
-    'Healthcare',
-    'Speculative Design',
-    'FinTech',
-    'Animation & Film',
-    'Design Research',
-  ];
 
-  filterByButton(button: any) {
-    this.button = { button: button };
-    let tempProjects = this.projects;
-    this.projects = [];
-    this.projects = tempProjects;
-  }
-
-  button: any = '';
-  searchText: string = '';
-
-  onSearchTextEntered(searchValue: string) {
-    this.searchText = searchValue;
-  }
-
-  hasMatchingButton(project: any) {
-    return project.cards.some(
-      (card: { button: any }) => card.button === this.button.button
-    );
-  }
-
-  showMoreTags = false;
-  expandedProjects : any[] = [];
-
-toggleTags(project: any) {
-  if (this.expandedProjects.includes(project)) {
-    this.expandedProjects = this.expandedProjects.filter(p => p !== project);
-  } else {
-    this.expandedProjects.push(project);
-  }
 }
-}
+

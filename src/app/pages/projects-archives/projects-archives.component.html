@@ -1,341 +1,64 @@
 <app-header></app-header>
 
 <section class="pt-30">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12 mb-30">
-                <h2 class="section-heading">Projects <span class="text-grey"> |  Resources </span></h2>
-            </div>
-            <div class="col-md-5 mb-3">
-              <app-searchproject></app-searchproject>
-            </div>
-            <div class="col-md-7 mb-3">
-                <div class="d-flex justify-content-md-end align-items-center">
-                    <a class="btn btn-project2 me-3" routerLink="/dashboard">My Projects</a>
-                    <a class="btn btn-other-project2" routerLink="/projects-archives">Other Projects & Archives</a>
-                </div>
-            </div>
-            <div class="col-md-12 mb-30">
-                <a class="btn btn-sm btn-options mb-2 me-2" href="javascript:;">Behavioural Design</a>
-                <a class="btn btn-sm btn-options mb-2 me-2" href="javascript:;">Branding & Marketing</a>
-                <a class="btn btn-sm btn-options mb-2 me-2" href="javascript:;">Healthcare</a>
-                <a class="btn btn-sm btn-options mb-2 me-2" href="javascript:;">Speculative Design</a>
-                <a class="btn btn-sm btn-options mb-2 me-2" href="javascript:;">FinTech</a>
-                <a class="btn btn-sm btn-options mb-2 me-2" href="javascript:;">Animation & Film</a>
-                <a class="btn btn-sm btn-options mb-2 me-2" href="javascript:;">Design Research</a>
-                <i class="fa-solid fa-angle-down"></i>
-            </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 mb-30">
+        <h2 class="section-heading">Projects <span class="text-grey"> | Resources </span></h2>
+      </div>
+      <div class="col-md-5 mb-3">
+        <app-searchproject (searchTextChanged)="onSearchTextEntered($event)"></app-searchproject>
+      </div>
+      <div class="col-md-7 mb-3">
+        <div class="d-flex justify-content-md-end align-items-center">
+          <a class="btn btn-project2 me-3" routerLink="/dashboard">My Projects</a>
+          <a class="btn btn-other-project2" routerLink="/projects-archives">Other Projects & Archives</a>
         </div>
-        <div class="row">
-            <div class="col-md-6 col-xl-4 mb-3">
-                <div class="card other-card-project">
-                    <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col-md-3">
-                                <img class="img-fluid" src="assets/images/card-image.png" alt="card-image">
-                            </div>
-                            <div class="col-md-9">
-                                <a href="javascript:;">Coca-Cola IPL Branding</a>
-                                <p>ID : 01322</p>
-                                <p>Client Name 1  |  Placeholder Name here | Adv...</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p>
-                                    Description here the monsoon weather has been very gloomy lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiud mone lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiud ...
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-md-12">
-                        <a href="javascript:;" class="btn project-btn mb-2">Healthcare</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Development sector</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Mental Health</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Behavioural Design</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Branding & Marketing</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">+2</a>
-                    </div>
-                    <div class="col-md-12">
-                        <p class="research"><i class="fa-solid fa-clock"></i> Secondary Research</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-4 mb-3">
-                <div class="card other-card-project">
-                    <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col-md-3">
-                                <img class="img-fluid" src="assets/images/card-image.png" alt="card-image">
-                            </div>
-                            <div class="col-md-9">
-                                <a href="javascript:;">Coca-Cola IPL Branding</a>
-                                <p>ID : 01322</p>
-                                <p>Client Name 1  |  Placeholder Name here | Adv...</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p>
-                                    Description here the monsoon weather has been very gloomy lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiud mone lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiud ...
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-md-12">
-                        <a href="javascript:;" class="btn project-btn mb-2">Healthcare</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Development sector</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Mental Health</a>
-                    </div>
-                    <div class="col-md-12">
-                        <p class="research"><i class="fa-solid fa-clock"></i> Secondary Research</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-4 mb-3">
-                <div class="card other-card-project">
-                    <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col-md-3">
-                                <img class="img-fluid" src="assets/images/card-image.png" alt="card-image">
-                            </div>
-                            <div class="col-md-9">
-                                <a href="javascript:;">Coca-Cola IPL Branding</a>
-                                <p>ID : 01322</p>
-                                <p>Client Name 1  |  Placeholder Name here | Adv...</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p>
-                                    Description here the monsoon weather has been very gloomy lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiud mone lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiud ...
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-md-12">
-                        <a href="javascript:;" class="btn project-btn mb-2">Healthcare</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Development sector</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Mental Health</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Behavioural Design</a>
-                    </div>
-                    <div class="col-md-12">
-                        <p class="research"><i class="fa-solid fa-clock"></i> Secondary Research</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-4 mb-3">
-                <div class="card other-card-project">
-                    <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col-md-3">
-                                <img class="img-fluid" src="assets/images/card-image.png" alt="card-image">
-                            </div>
-                            <div class="col-md-9">
-                                <a href="javascript:;">Coca-Cola IPL Branding</a>
-                                <p>ID : 01322</p>
-                                <p>Client Name 1  |  Placeholder Name here | Adv...</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p>
-                                    Description here the monsoon weather has been very gloomy lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiud mone lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiud ...
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-md-12">
-                        <a href="javascript:;" class="btn project-btn mb-2">Healthcare</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Development sector</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Mental Health</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Behavioural Design</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Branding & Marketing</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">+2</a>
-                    </div>
-                    <div class="col-md-12">
-                        <p class="research"><i class="fa-solid fa-clock"></i> Secondary Research</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-4 mb-3">
-                <div class="card other-card-project">
-                    <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col-md-3">
-                                <img class="img-fluid" src="assets/images/card-image.png" alt="card-image">
-                            </div>
-                            <div class="col-md-9">
-                                <a href="javascript:;">Coca-Cola IPL Branding</a>
-                                <p>ID : 01322</p>
-                                <p>Client Name 1  |  Placeholder Name here | Adv...</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p>
-                                    Description here the monsoon weather has been very gloomy lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiud mone lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiud ...
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-md-12">
-                        <a href="javascript:;" class="btn project-btn mb-2">Healthcare</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Development sector</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Mental Health</a>
-                    </div>
-                    <div class="col-md-12">
-                        <p class="research"><i class="fa-solid fa-clock"></i> Secondary Research</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-4 mb-3">
-                <div class="card other-card-project">
-                    <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col-md-3">
-                                <img class="img-fluid" src="assets/images/card-image.png" alt="card-image">
-                            </div>
-                            <div class="col-md-9">
-                                <a href="javascript:;">Coca-Cola IPL Branding</a>
-                                <p>ID : 01322</p>
-                                <p>Client Name 1  |  Placeholder Name here | Adv...</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p>
-                                    Description here the monsoon weather has been very gloomy lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiud mone lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiud ...
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-md-12">
-                        <a href="javascript:;" class="btn project-btn mb-2">Healthcare</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Development sector</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Mental Health</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Behavioural Design</a>
-                    </div>
-                    <div class="col-md-12">
-                        <p class="research"><i class="fa-solid fa-clock"></i> Secondary Research</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-4 mb-3">
-                <div class="card other-card-project">
-                    <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col-md-3">
-                                <img class="img-fluid" src="assets/images/card-image.png" alt="card-image">
-                            </div>
-                            <div class="col-md-9">
-                                <a href="javascript:;">Coca-Cola IPL Branding</a>
-                                <p>ID : 01322</p>
-                                <p>Client Name 1  |  Placeholder Name here | Adv...</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p>
-                                    Description here the monsoon weather has been very gloomy lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiud mone lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiud ...
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-md-12">
-                        <a href="javascript:;" class="btn project-btn mb-2">Healthcare</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Development sector</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Mental Health</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Behavioural Design</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Branding & Marketing</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">+2</a>
-                    </div>
-                    <div class="col-md-12">
-                        <p class="research"><i class="fa-solid fa-clock"></i> Secondary Research</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-4 mb-3">
-                <div class="card other-card-project">
-                    <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col-md-3">
-                                <img class="img-fluid" src="assets/images/card-image.png" alt="card-image">
-                            </div>
-                            <div class="col-md-9">
-                                <a href="javascript:;">Coca-Cola IPL Branding</a>
-                                <p>ID : 01322</p>
-                                <p>Client Name 1  |  Placeholder Name here | Adv...</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p>
-                                    Description here the monsoon weather has been very gloomy lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiud mone lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiud ...
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-md-12">
-                        <a href="javascript:;" class="btn project-btn mb-2">Healthcare</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Development sector</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Mental Health</a>
-                    </div>
-                    <div class="col-md-12">
-                        <p class="research"><i class="fa-solid fa-clock"></i> Secondary Research</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-4 mb-3">
-                <div class="card other-card-project">
-                    <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col-md-3">
-                                <img class="img-fluid" src="assets/images/card-image.png" alt="card-image">
-                            </div>
-                            <div class="col-md-9">
-                                <a href="javascript:;">Coca-Cola IPL Branding</a>
-                                <p>ID : 01322</p>
-                                <p>Client Name 1  |  Placeholder Name here | Adv...</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p>
-                                    Description here the monsoon weather has been very gloomy lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiud mone lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiud ...
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-md-12">
-                        <a href="javascript:;" class="btn project-btn mb-2">Healthcare</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Development sector</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Mental Health</a>
-                        <a href="javascript:;" class="btn project-btn mb-2">Behavioural Design</a>
-                    </div>
-                    <div class="col-md-12">
-                        <p class="research"><i class="fa-solid fa-clock"></i> Secondary Research</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
+      <div class="col-md-12 mb-30">
+       <button class="btn btn-sm btn-options mb-2 me-2" *ngFor="let button of buttons" (click)="filterByButton(button)">{{ button }}</button>
+       <i class="fa-solid fa-angle-down"></i>
+      </div>
     </div>
+    <div class="row">
+      <ng-container class="col-md-6 col-xl-4 mb-3" *ngFor="let project of projects">
+      <ng-container *ngIf=" this.button === '' || hasMatchingButton(project)">
+  <div class="col-md-6 col-xl-4 mb-3" *ngIf="searchText === '' || project.name.toLowerCase().includes(searchText)">
+  <div class="card other-card-project"  >
+            <div class="card-body">
+              <div class="row mb-3">
+                <div class="col-md-3">
+                  <img class="img-fluid" src="assets/images/card-image.png" alt="card-image"/>
+                    </div>
+                  <div class="col-md-9">
+                  <a>{{ project.name }}</a>
+                  <p>ID : {{ project.id }}</p>
+                  <p>{{ project.client }}</p>
+                  </div>
+                  </div>
+                  <div class="row">
+                  <div class="col-md-12">
+                  <p>{{ project.description }}</p>
+                </div>
+                </div>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-12">
+              <ng-container  *ngFor="let card of project.cards; index as i">
+                  <span class="btn project-btn mb-2" *ngIf="i < 5 || this.expandedProjects.includes(project)">{{card.button}}</span>
+                </ng-container>
+                  <button class="btn project-btn mb-2" *ngIf="project.cards.length > 5" (click)="toggleTags(project)">
+                  {{ this.expandedProjects.includes(project) ? 'Hide' : '+' + (project.cards.length - 5) + '' }}
+                  </button>
+              </div>
+            <div class="col-md-12">
+           <p class="research"> <i class="fa-solid fa-clock"></i> Secondary Research</p>
+            </div>
+          </div>
+         </div>
+      </ng-container>
+    </ng-container>
+    </div>
+  </div>
 </section>

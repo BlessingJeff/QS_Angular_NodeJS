@@ -16,6 +16,7 @@ import { ProjectsArchivesComponent } from './pages/projects-archives/projects-ar
 import { CreateProjectComponent } from './pages/create-project/create-project.component';
 import { CreateProjectFormComponent } from './components/create-project-form/create-project-form.component';
 import { SearchprojectComponent } from './components/searchproject/searchproject.component';
+import { ProjectcardComponent } from './components/projectcard/projectcard.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,9 @@ import { SearchprojectComponent } from './components/searchproject/searchproject
     ProjectsArchivesComponent,
     CreateProjectComponent,
     CreateProjectFormComponent,
-    SearchprojectComponent
+    SearchprojectComponent,
+    ProjectcardComponent,
+
   ],
   imports: [
     BrowserModule,
