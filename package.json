@@ -22,6 +22,8 @@
     "@ng-bootstrap/ng-bootstrap": "^13.0.0",
     "@popperjs/core": "^2.10.2",
     "bootstrap": "^5.2.0",
+    "ng-multiselect-dropdown": "^0.3.9",
+    "ng2-img-max": "^2.2.8",
     "nodemon": "^2.0.20",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

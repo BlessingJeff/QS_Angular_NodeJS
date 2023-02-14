@@ -5,6 +5,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProjectsArchivesComponent } from './pages/projects-archives/projects-archives.component';
 import { ProjectcardComponent } from './components/projectcard/projectcard.component';
+import { ProjectTeamComponent } from './pages/project-team/project-team.component';
+
 
 
 const routes: Routes = [
@@ -12,7 +14,9 @@ const routes: Routes = [
   {path:'dashboard',component:DashboardComponent},
   {path:'projects-archives',component:ProjectsArchivesComponent},
   {path:'create-project',component:CreateProjectComponent},
-  {path:'projectcard',component:ProjectcardComponent}
+  {path:'projectcard',component:ProjectcardComponent},
+  {path:'project-team',component:ProjectTeamComponent}
+
 ];
 
 @NgModule({

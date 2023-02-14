@@ -27,12 +27,13 @@
                 </a>
             </div>
             <ng-container class="col-md-6 col-lg-4 col-xl-3 mb-3" *ngFor="let project of projects">
-              <div class="col-md-6 col-lg-4 col-xl-3 mb-3" *ngIf=" searchText === '' || project.name.toLowerCase().includes(searchText); else notFound"  >
+              <div class="col-md-6 col-lg-4 col-xl-3 mb-3" *ngIf=" searchText === '' || project.name.toLowerCase().includes(searchText);"  >
+               <div class="col-md-6 col-lg-4 col-xl-3 mb-3" *ngIf="projects.length === 0 && searchText !== ''">
+                </div>
+                          <!-- <app-projectcard [projectdetail]="project"></app-projectcard>
+                         <app-projectcard></app-projectcard> -->
 
-<!-- <app-projectcard [projectdetail]="project"></app-projectcard>
-<app-projectcard></app-projectcard> -->
-
-<div class="card card-project">
+                              <div class="card card-project">
                     <div class="card-body ">
                         <div class="row g-2">
                             <div class="col-md-3">
@@ -51,11 +52,10 @@
                     </div>
                      <p class="publish"><i class="fa-solid fa-clock me-1"></i> Secondary Research</p>
                     </div>
-              </ng-container>
-                </div>
-                  </div>
-    <ng-template #notFound >Not found</ng-template>
-
-</section>
+                </ng-container>
+              <p *ngIf="noMatches">Not found</p>
+            </div>
+            </div>
+            </section>
 
 

@@ -17,6 +17,11 @@ import { CreateProjectComponent } from './pages/create-project/create-project.co
 import { CreateProjectFormComponent } from './components/create-project-form/create-project-form.component';
 import { SearchprojectComponent } from './components/searchproject/searchproject.component';
 import { ProjectcardComponent } from './components/projectcard/projectcard.component';
+import { NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
+import { ProjectTeamComponent } from './pages/project-team/project-team.component';
+import { ProjectTeamFormComponent } from './components/project-team-form/project-team-form.component';
+
+
 
 @NgModule({
   declarations: [
@@ -30,6 +35,8 @@ import { ProjectcardComponent } from './components/projectcard/projectcard.compo
     CreateProjectFormComponent,
     SearchprojectComponent,
     ProjectcardComponent,
+    ProjectTeamComponent,
+    ProjectTeamFormComponent
 
   ],
   imports: [
@@ -38,7 +45,9 @@ import { ProjectcardComponent } from './components/projectcard/projectcard.compo
     NgbModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgMultiSelectDropDownModule.forRoot()
+
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptor, multi:true}],
   bootstrap: [AppComponent]

@@ -33,9 +33,13 @@ export class DashboardComponent {
   ];
 
   searchText: string = '';
+  noMatches = false;
 
   onSearchTextEntered(searchValue: string) {
-    this.searchText = searchValue;
-    console.log(this.searchText);
+    this.searchText = searchValue
+    this.noMatches = this.projects.every(
+      project => !project.name.toLowerCase().includes(this.searchText)
+    );
   }
-}
+  }
+

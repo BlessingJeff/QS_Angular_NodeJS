@@ -120,9 +120,14 @@ export class ProjectsArchivesComponent {
 
   button: any = '';
   searchText: string = '';
+  noMatches = false;
+
 
   onSearchTextEntered(searchValue: string) {
-    this.searchText = searchValue;
+    this.searchText = searchValue
+    this.noMatches = this.projects.every(
+      project => !project.name.toLowerCase().includes(this.searchText)
+    );
   }
 
   hasMatchingButton(project: any) {

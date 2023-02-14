@@ -9,13 +9,11 @@
                   <div class="row mb-3">
                       <div class="col-md-2 image-upload">
                           <label for="file" style="width:100%;" [ngClass]="{'is-invalid':submitted && f['image'].errors}">
-                              <img class="img-fluid w-90" src="assets/images/add.png" alt="Add a image" />
+                              <img class="img-fluid w-90" [src]="imgurl || defaultImage" alt="Add a image" />
                           </label>
-                          <input id="file" type="file" name="image" (change)="uploadImage($event)" style="display: none;"/>
-                          <!-- <input id="file" type="file" name="image" (change)="uploadImage($event)"  /> -->
-                          <div class="filename mt-3" *ngIf="imageName">{{imageName}}</div>
+                          <input id="file" type="file" name="image" (change)="uploadImage($event)" style="display: none;" accept=".png, .jpg, .jpeg" />
+                          <!-- <div class="filename mt-3" *ngIf="imageName">{{imageName}}</div> -->
                           <p class="text-danger mb-0 mt-1" *ngIf="submitted && f['image'].errors && f['image'].errors?.['required']">Image is Required</p>
-                          <!-- <img [src]="imageName" alt="" /> -->
                       </div>
                       <div class="col-md-9">
                           <div class="mb-40">
@@ -27,14 +25,18 @@
                           <hr />
 
                           <h5 class="section-subtitle">Client Details:</h5>
-                          <div class="principal-contractor-btns" *ngIf="principalclientlength < 1">
+                          <div class="principal-contractor-btns" [ngClass]="principalclientbuttons ? 'd-none' : ''" *ngIf="principalclientlength < 1">
                               <a class="btn btn-principal-contractor principal-client me-3 mb-3" (click)="showpcform()">+ Principal Client</a>
                               <a class="btn btn-principal-contractor me-3 mb-3" href="javascript:;">+ Contractor</a>
                           </div>
 
+                          <ul class="ul-label" *ngIf="principalclientorganization">
+                            <li *ngFor="let pcorg of principalclientorganization"><span class="text-gray">Principal Client : </span><span class="text-dark fw-bold">{{pcorg}}</span></li>
+                          </ul>
+
                           <!-- Principal Client form -->
                           <div *ngIf="principalclientlength">
-                            <div class="principal-client-container" *ngFor="let principalClient of principalclientArray.controls; let i = index;" formArrayName="principal-client">
+                            <div class="principal-client-container" *ngFor="let principalClient of principalclientArray.controls; let i = index;" formArrayName="principalclientform">
                               <div class="form-group" [formGroupName]='i'>
                                   <div class="row">
                                       <div class="col-md-6 col-lg-4 mb-3">
@@ -77,13 +79,14 @@
                                             <p class="text-danger mb-0 mt-1" *ngIf="submitted && principalClient.get('mobileno')?.errors && principalClient.get('mobileno')?.errors?.['required']">Mobile Number is Required</p>
                                       </div>
                                       <div class="col-md-12">
-                                          <a class="btn mx-1 float-md-end remove-contact mb-2" (click)="removePrincipalClient(i)">Cancel</a>
+                                          <a class="btn mx-1 float-md-end remove-contact mb-3" (click)="removePrincipalClient(i)">Cancel</a>
                                       </div>
                                   </div>
                               </div>
                             </div>
-                            <div class="col-md-12 mb-3" *ngIf="principalclientlength < 3">
-                              <a href="javascript:;" class="btn add-another-contact add-contact mb-3" (click)="addPrincipalClient()"><span class="btn-add-another-contact">+</span> Add another contact</a>
+                            <div class="col-md-12 mb-3 d-flex">
+                                <a *ngIf="principalclientlength < 3" href="javascript:;" class="btn add-another-contact add-contact mb-3 text-start" (click)="addPrincipalClient()"><span class="btn-add-another-contact">+</span> Add another contact</a>
+                                <a *ngIf="principalclientlength" href="javascript:;" class="btn remove-contact mb-3  ms-auto" (click)="addShowPrincipalClient()">Add</a>
                             </div>
                           </div>
 
@@ -104,34 +107,25 @@
                               </div>
                               <div class="col-md-6 col-xl-2 mb-3">
                                   <label class="form-label">Duration</label>
-                                  <select class="form-select" formControlName="fromdate" [ngClass]="{'is-invalid':submitted && f['fromdate'].errors}">
-                                      <option value="" selected hidden>From</option>
-                                      <option value="March 2022">March 2022</option>
-                                      <option value="April 2022">April 2022</option>
-                                      <option value="June 2022">June 2022</option>
-                                  </select>
+                                  <input type="date" class="form-control" formControlName="fromdate" placeholder="to" [ngClass]="{'is-invalid':submitted && f['fromdate'].errors}" (change)="fromDate()" />
                                   <p class="text-danger mb-0 mt-1" *ngIf="submitted && f['fromdate'].errors && f['fromdate'].errors?.['required']">From Date is Required</p>
                               </div>
                               <div class="col-md-6 col-xl-2 mb-3 text-end">
-                                  <label class="form-label">0 months</label>
-                                  <select class="form-select" formControlName="todate" [ngClass]="{'is-invalid':submitted && f['todate'].errors}">
-                                      <option value="" selected hidden>To</option>
-                                      <option value="Dec 2023">Dec 2023</option>
-                                      <option value="Jan 2023">Jan 2023</option>
-                                      <option value="Feb 2023">Feb 2023</option>
-                                  </select>
-                                  <p class="text-danger mb-0 mt-1" *ngIf="submitted && f['todate'].errors && f['todate'].errors?.['required']">To Date is Required</p>
+                                  <label class="form-label">{{duration}} months</label>
+                                  <input type="date" class="form-control" formControlName="todate" [ngClass]="{'is-invalid':submitted && f['todate'].errors}"  (change)="toDate()" />
+                                  <p class="text-danger mb-0 mt-1 text-start" *ngIf="submitted && f['todate'].errors && f['todate'].errors?.['required']">To Date is Required</p>
                               </div>
                               <div class="col-md-6 col-xl-4 mb-3">
                                   <div class="d-flex justify-content-between mtop-5">
                                       <label class="form-label">Budget</label>
                                       <div class="hide">
-                                        <div *ngIf="currencyType; else elseBlock">{{currencyType + ':' + currency}}</div>
+                                        <div *ngIf="currencyType; else elseBlock">{{currencyType}} : {{ currency | number}}</div>
                                         <ng-template #elseBlock>INR ₹</ng-template>
                                       </div>
                                   </div>
                                   <div class="input-group">
                                       <select class="input-group-text select_box" (change)="selectCurrency($event)" formControlName="currency">
+                                          <option selected value="" hidden>$ USD</option>
                                           <option selected value="INR ₹">$ USD</option>
                                           <option value="USD $">₹ INR</option>
                                       </select>
@@ -164,22 +158,38 @@
                               </div>
                               <div class="col-md-6 col-lg-4 mb-3">
                                   <label class="form-label">Industry</label>
-                                  <select class="form-select" formControlName="industry" [ngClass]="{'is-invalid':submitted && f['industry'].errors}">
-                                      <option value="" selected hidden>Select Industry</option>
-                                      <option value="Industry One">Industry One</option>
-                                      <option value="Industry Two">Industry Two</option>
-                                      <option value="Industry Three">Industry Three</option>
-                                  </select>
+                                  <ng-multiselect-dropdown
+                                    [placeholder]="'Select Industry'"
+                                    [settings]="dropdownSettings"
+                                    [data]="industryList"
+                                    [(ngModel)]="selectedindustryItems"
+                                    (onSelect)="onItemSelect($event)"
+                                    (onDeSelect)="onItemDeSelect($event)"
+                                    formControlName="industry"
+                                    [ngClass]="{'is-invalid':submitted && f['industry'].errors}"
+                                  >
+                                  </ng-multiselect-dropdown>
+                                  <ul *ngIf="selectedIndustry" class="ul-label">
+                                    <li *ngFor="let industry of selectedIndustry">{{industry}}</li>
+                                  </ul>
                                   <p class="text-danger mb-0 mt-1" *ngIf="submitted && f['industry'].errors && f['industry'].errors?.['required']">Industry is Required</p>
                               </div>
                               <div class="col-md-6 col-lg-4 mb-3">
                                   <label class="form-label">Sector of Work</label>
-                                  <select class="form-select" formControlName="sectorwork" [ngClass]="{'is-invalid':submitted && f['sectorwork'].errors}">
-                                      <option value="" selected hidden>Select Sector of Work</option>
-                                      <option value="Sector of Work One">Sector of Work One</option>
-                                      <option value="Sector of Work Two">Sector of Work Two</option>
-                                      <option value="Sector of Work Three">Sector of Work Three</option>
-                                  </select>
+                                  <ng-multiselect-dropdown
+                                    [placeholder]="'Select Sector of Work'"
+                                    [settings]="dropdownSettings"
+                                    [data]="sectorWork"
+                                    [(ngModel)]="selectedSectorWorkItems"
+                                    (onSelect)="onSectorWorkSelect($event)"
+                                    (onDeSelect)="onSectorWorkDeSelect($event)"
+                                    formControlName="sectorwork"
+                                    [ngClass]="{'is-invalid':submitted && f['sectorwork'].errors}"
+                                  >
+                                  </ng-multiselect-dropdown>
+                                  <ul *ngIf="selectedSectorWork" class="ul-label">
+                                    <li *ngFor="let sectorwork of selectedSectorWork">{{sectorwork}}</li>
+                                  </ul>
                                   <p class="text-danger mb-0 mt-1" *ngIf="submitted && f['sectorwork'].errors && f['sectorwork'].errors?.['required']">Sector of Work is Required</p>
                               </div>
                           </div>
@@ -197,71 +207,3 @@
       </div>
   </div>
 </section>
-
-<!--Principal client Modal
-<div class="modal fade" id="principalModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content p-2 text-project-setup">
-          <div class="modal-body">
-              <div class="row text-black">
-                  <div class="col-md-12 mb-3 h6">Client Details</div>
-                  <div class="col-md-12 mb-3 h4">Add New Principal Client Organization</div>
-              </div>
-              <div class="row">
-                  <form>
-                      <div class="col-md-12 mb-3">
-                          <label class="form-label">Organization Name</label>
-                          <input type="text" class="form-control w-75" placeholder="Sony Corporation" />
-                      </div>
-                      <div class="col-md-12 mb-3">
-                          <ul>
-                              <li>Please ensure to type the name in long form</li>
-                              <li>Make sure the 1st letter of every word is a capital letter</li>
-                              <li>Ensure that the new Organization is unique and not a duplicate</li>
-                          </ul>
-                      </div>
-                      <div class="col-md-12 mb-3">
-                          <label class="form-label">Re-enter Service Type</label>
-                          <input type="text" class="form-control w-75" placeholder="Sony Corporation" />
-                      </div>
-                      <button type="submit" class="btn btn-dark-grey float-end">Add</button>
-                  </form>
-              </div>
-          </div>
-      </div>
-  </div>
-</div> -->
-
-<!-- Type Modal
-<div class="modal fade" id="typeModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content p-2 text-project-setup">
-          <div class="modal-body">
-              <div class="row text-black">
-                  <div class="col-md-12 mb-3 h6">Tagging and Identification</div>
-                  <div class="col-md-12 mb-3 fs-22 h4">Add New Service Type</div>
-              </div>
-              <div class="row">
-                  <form>
-                      <div class="col-md-12 mb-3">
-                          <label class="form-label">Service Type</label>
-                          <input type="text" class="form-control w-75" placeholder="Trend Forecasting"/>
-                      </div>
-                      <div class="col-md-12 mb-3">
-                          <ul>
-                              <li>Please ensure to type the name in long form</li>
-                              <li>Make sure the 1st letter of every word is a capital letter</li>
-                              <li>Ensure that the new Organization is unique and not a duplicate</li>
-                          </ul>
-                      </div>
-                      <div class="col-md-12 mb-3">
-                          <label class="form-label">Re-enter Service Type</label>
-                          <input type="text" class="form-control w-75" placeholder="Trend Forecasting"/>
-                      </div>
-                      <button type="submit" class="btn btn-dark-grey float-end">Add</button>
-                  </form>
-              </div>
-          </div>
-      </div>
-  </div>
-</div> -->

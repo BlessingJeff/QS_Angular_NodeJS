@@ -1,0 +1,74 @@
+<form [formGroup]="projectteamform">
+  <div class="row mb-3">
+      <div class="col-md-12"><h6 class="section-subtitle">Internal team</h6></div>
+        <div class="col-md-6 col-lg-4 mb-30">
+            <label class="form-label">Partners & Principals</label>
+            <select class="form-select" formControlName="partners" [ngClass]="{'is-invalid':submitted && f['partners'].errors}">
+                <option value="" selected hidden>Select Partners</option>
+                <option value="Partners 1">Partners 1</option>
+                <option value="Partners 2">Partners 2</option>
+                <option value="Partners 3">Partners 3</option>
+            </select>
+            <p *ngIf="submitted && f['partners'].errors?.['required']" class="text-danger mb-0 mt-1">Partner is Required</p>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-30">
+            <label class="form-label">Managers</label>
+            <select class="form-select" formControlName="managers" [ngClass]="{'is-invalid':submitted && f['managers'].errors}">
+                <option value="" selected hidden>Select Managers</option>
+                <option value="Managers 1">Managers 1</option>
+                <option value="Managers 2">Managers 2</option>
+                <option value="Managers 3">Managers 3</option>
+            </select>
+            <p class="mb-0 mt-1 text-danger" *ngIf="submitted && f['managers'].errors?.['required']">Managers is Required</p>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-30">
+            <label class="form-label">Associates</label>
+            <select class="form-select" formControlName="associates" [ngClass]="{'is-invalid':submitted && f['associates'].errors}">
+                <option value="" selected hidden>Select Associates</option>
+                <option value="Associates 1">Associates 1</option>
+                <option value="Associates 2">Associates 2</option>
+                <option value="Associates 3">Associates 3</option>
+            </select>
+            <p class="mb-0 mt-1 text-danger" *ngIf="submitted && f['associates'].errors?.['required']">Associates is Required</p>
+        </div>
+
+        <hr />
+
+        <div class="col-md-12"><h6 class="section-subtitle">External team</h6></div>
+        <div class="col-md-6 col-lg-4 mb-3 consultant-multiselect">
+            <label class="form-label">Consultants</label>
+            <ng-multiselect-dropdown
+              [placeholder]="'Select Sector of Work'"
+              [settings]="dropdownSettings"
+              [data]="consultant"
+              [(ngModel)]="selectedConsultantItems"
+              (onSelect)="onConsultantsSelect($event)"
+              (onDeSelect)="onConsultantsDeSelect($event)"
+              formControlName="consultants"
+              [ngClass]="{'is-invalid':submitted && f['consultants'].errors}"
+            >
+            </ng-multiselect-dropdown>
+            <p class="mb-0 mt-1 text-danger" *ngIf="submitted && f['consultants'].errors?.['required']">Consultants is Required</p>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-3">
+            <label class="form-label">Sub-Contractors</label>
+            <select class="form-select" formControlName="subcontractors" [ngClass]="{'is-invalid':submitted && f['subcontractors'].errors}">
+                <option value="" selected hidden>Select Sub-Contractors</option>
+                <option value="Sub-Contractors 1">Sub-Contractors 1</option>
+                <option value="Sub-Contractors 2">Sub-Contractors 2</option>
+                <option value="Sub-Contractors 3">Sub-Contractors 3</option>
+            </select>
+            <p class="mb-0 mt-1 text-danger" *ngIf="submitted && f['subcontractors'].errors?.['required']">Sub-Contractors is Required</p>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-3">
+            <label class="form-label">Collaborators</label>
+            <select class="form-select" formControlName="collaborators" [ngClass]="{'is-invalid':submitted && f['collaborators'].errors}">
+                <option value="" selected hidden>Select Collaborators</option>
+                <option value="Collaborators 1">Collaborators 1</option>
+                <option value="Collaborators 2">Collaborators 2</option>
+                <option value="Collaborators 3">Collaborators 3</option>
+            </select>
+            <p class="mb-0 mt-1 text-danger" *ngIf="submitted && f['collaborators'].errors?.['required']">Collaborators is Required</p>
+        </div>
+    </div>
+</form>
